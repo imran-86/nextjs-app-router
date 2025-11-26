@@ -1,6 +1,12 @@
-export default async  function PaperDetails({params}) {
+import PaperDetailsClient from "@/Components/PaperDetails";
+
+export default async  function Details({params}) {
  
      const {paperId} = await params;
 
-    return <p>PaperDetails page : {paperId}</p>
+    return (
+        <div>
+            <PaperDetailsClient paperId={paperId}></PaperDetailsClient>
+        </div>
+    )
 }
