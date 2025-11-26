@@ -1,7 +1,7 @@
 'use client'
 import React, {  useEffect, useState } from 'react';
 
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import { auth } from '@/app/firebase/firebase.config';
 import { AuthContext } from './AuthContext';
 
@@ -24,6 +24,12 @@ const AuthProvider = ({children}) => {
         unsubscribe();
     }
     },[])
+
+
+    const signInUser = (email,password) =>{
+         setLoading(true);
+         return signInWithEmailAndPassword(auth,email,password)
+    }
     const createUser = (email,password) =>{
         setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password)
@@ -47,7 +53,8 @@ const AuthProvider = ({children}) => {
         setLoading,
         createUser,
         signInWithGoogle,
-         updateUser 
+         updateUser ,
+         signInUser
     }
 
     return (

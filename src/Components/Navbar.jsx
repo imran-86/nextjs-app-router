@@ -1,6 +1,8 @@
 import Link from "next/link"
 
 export default function Navbar(){
+
+
     const links = <>
        
        <Link className="pl-2" href="/">Home</Link>

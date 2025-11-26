@@ -4,7 +4,7 @@ import { AuthContext } from "@/Components/Context/AuthContext"
 import Link from "next/link"
 import { useContext, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { toast } from "react-hot-toast"; // toast import করুন
+import { toast } from "react-hot-toast"; 
 
 export default function Register() {
     const { createUser, signInWithGoogle, updateUser } = useContext(AuthContext);
@@ -12,7 +12,7 @@ export default function Register() {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false); // loading state যোগ করুন
+    const [loading, setLoading] = useState(false); 
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
@@ -131,7 +131,7 @@ export default function Register() {
                                 </div>
                                 
                                 <div className="mt-4">
-                                    {/* এখানে class এর পরিবর্তে className ব্যবহার করুন */}
+                                    
                                     <label className="label cursor-pointer justify-start gap-2 mt-2">
                                         <input 
                                             type="checkbox" 
