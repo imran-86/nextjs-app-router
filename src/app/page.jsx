@@ -1,3 +1,4 @@
+import FeaturedPapers from "@/Components/FeaturedPapers";
 import HeroSection from "@/Components/Hero";
 
 
@@ -17,6 +18,7 @@ export default function Home() {
         </div>
       </section>
       <HeroSection></HeroSection>
+      <FeaturedPapers></FeaturedPapers>
     </div>
   );
 }
