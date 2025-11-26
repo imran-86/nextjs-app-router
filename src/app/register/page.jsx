@@ -5,6 +5,8 @@ import Link from "next/link"
 import { useContext, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-hot-toast"; 
+import { useRouter } from "next/navigation";
+
 
 export default function Register() {
     const { createUser, signInWithGoogle, updateUser } = useContext(AuthContext);
@@ -13,12 +15,15 @@ export default function Register() {
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false); 
+    const router = useRouter();
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then((result) => {
                 console.log(result);
                 toast.success("Google Sign In Successful!");
+                router.push('/')
+              
             })
             .catch((error) => {
                 console.log(error);
@@ -56,9 +61,12 @@ export default function Register() {
                 return updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
                         event.target.reset();
+                        
                         toast.success("Successfully Signed Up!");
                         setSuccess(true);
                         setLoading(false);
+                        router.push('/')
+                        
                     });
             })
             .catch((err) => {
