@@ -21,7 +21,7 @@ export default function Navbar(){
     const links = <>
        
        <Link className="pl-2" href="/">Home</Link>
-       <Link  className="pl-2" href="/">Items</Link>
+       <Link  className="pl-2" href="/papers">All Papers</Link>
         <Link  className="pl-2" href="/">About</Link>
     </>
     return <div>
