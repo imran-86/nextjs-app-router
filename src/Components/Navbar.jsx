@@ -1,7 +1,22 @@
+'use client'
 import Link from "next/link"
+import { useContext } from "react";
+import { AuthContext } from "./Context/AuthContext";
+
 
 export default function Navbar(){
-
+  
+     const {user,signOutUser} = useContext(AuthContext);
+    const handleSignOut = () =>{
+           signOutUser()
+           .then(()=>{
+             navigate('/')
+           })
+          .catch(err =>{
+            console.log(err);
+            
+          })
+  }
 
     const links = <>
        
@@ -29,9 +44,33 @@ export default function Navbar(){
      {links}
     </ul>
   </div>
-  <div className="navbar-end flex gap-2 list-none">
-     <Link href="/login">Login</Link>
-     <Link href="/register">Register</Link>
+  
+  <div className="navbar-end flex gap-2 list-none pr-5">
+    {
+      user?<div>
+         {user && (
+  <div className="dropdown dropdown-end">
+    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+      <div className="w-10 rounded-full">
+        <img
+        referrerPolicy='no-referrer'
+        alt="User Avatar" src={user.photoURL} />
+      </div>
+    </div>
+    
+   
+    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+      <li><a>Profile</a></li>
+      <li><button onClick={handleSignOut}>Logout</button></li>
+    </ul>
+  </div>
+)}
+      </div>: <div className="flex gap-4">
+        <Link  href="/login">Login</Link>
+        <Link href="/register">Register</Link>
+      </div>
+    }
+    
   </div>
 </div>
     </div>
