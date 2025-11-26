@@ -2,27 +2,34 @@
 import Link from "next/link"
 import { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
+import { useRouter } from "next/navigation";
 
 
 export default function Navbar(){
   
      const {user,signOutUser} = useContext(AuthContext);
-    const handleSignOut = () =>{
-           signOutUser()
-           .then(()=>{
-             navigate('/')
-           })
-          .catch(err =>{
-            console.log(err);
-            
-          })
-  }
+    const router = useRouter();
 
+const handleSignOut = () => {
+  signOutUser()
+    .then(() => {
+      
+      document.cookie = 'firebase-token=; path=/; max-age=0; SameSite=Strict';
+      router.push('/');
+      
+      console.log('Successfully signed out');
+    })
+    .catch(err => {
+      console.error('Sign out error:', err);
+    });
+}
     const links = <>
        
        <Link className="pl-2" href="/">Home</Link>
        <Link  className="pl-2" href="/papers">All Papers</Link>
         <Link  className="pl-2" href="/">About</Link>
+        <Link  className="pl-2" href="/add-papers">Add Papers</Link>
+        <Link  className="pl-2" href="/manage-papers">Manage Papers</Link>
     </>
     return <div>
         <div className="navbar bg-base-100 shadow-sm">
