@@ -1,3 +1,9 @@
+import ManagePapersContent from "@/Components/ManagePapersContent";
+
 export default function ManagePapers(){
-    return <p>Manage Papers</p>
+    return (
+        <div>
+            <ManagePapersContent></ManagePapersContent>
+        </div>
+    )
 }
