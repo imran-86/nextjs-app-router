@@ -1,4 +1,3 @@
-
 'use client'
 import { useState, useEffect, useContext } from 'react'
 import Link from 'next/link'
@@ -9,6 +8,7 @@ export default function ManagePapersContent() {
   const [papers, setPapers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [deletingId, setDeletingId] = useState(null)
 
   useEffect(() => {
     async function fetchUserPapers() {
@@ -23,6 +23,7 @@ export default function ManagePapersContent() {
         }
         
         const userPapers = await response.json()
+        console.log('Fetched papers:', userPapers) // Debug
         setPapers(userPapers)
       } catch (err) {
         console.error('Error:', err)
@@ -35,7 +36,41 @@ export default function ManagePapersContent() {
     fetchUserPapers()
   }, [user])
 
-  
+  const handleDeletePaper = async (paperId, paperTitle) => {
+    console.log('Deleting paper:', { paperId, paperTitle }) // Debug
+    
+    if (!confirm(`Are you sure you want to delete "${paperTitle}"? This action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      setDeletingId(paperId); 
+      
+      const response = await fetch(`/api/papers/${paperId}`, {
+        method: 'DELETE',
+      });
+
+      console.log('Delete response status:', response.status); // Debug
+
+      const result = await response.json();
+      console.log('Delete result:', result); // Debug
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to delete paper');
+      }
+
+      // Remove from local state using _id
+      setPapers(prevPapers => prevPapers.filter(paper => paper._id !== paperId));
+      
+      alert('Research paper deleted successfully!');
+      
+    } catch (error) {
+      console.error('Error deleting paper:', error);
+      alert(`Error deleting paper: ${error.message}`);
+    } finally {
+      setDeletingId(null);
+    }
+  }
 
   const getStatusBadge = (status) => {
     const statusConfig = {
@@ -80,7 +115,7 @@ export default function ManagePapersContent() {
             View and manage all your submitted research papers
           </p>
           <div className="mt-4 p-4 bg-info text-info-content rounded-lg inline-block">
-           
+            <p><strong>Logged in as:</strong> {user?.email}</p>
             <p><strong>Total Papers:</strong> {papers.length}</p>
           </div>
         </div>
@@ -106,7 +141,7 @@ export default function ManagePapersContent() {
                     {/* Paper Info */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-3">
-                        {getStatusBadge(paper.status)}
+                        {getStatusBadge(paper.status || 'pending')}
                         <span className="badge badge-primary">{paper.category}</span>
                         <span className="text-sm text-gray-500">
                           {new Date(paper.publishedDate).toLocaleDateString()}
@@ -125,6 +160,11 @@ export default function ManagePapersContent() {
                         <p className="text-sm line-clamp-2 text-gray-600">
                           {paper.description}
                         </p>
+                        
+                        {/* Debug Info - Temporary */}
+                        <div className="text-xs bg-yellow-100 p-2 rounded mt-2">
+                          <strong>Paper ID:</strong> {paper._id}
+                        </div>
                       </div>
 
                       {/* Stats */}
@@ -157,13 +197,18 @@ export default function ManagePapersContent() {
                         View Paper
                       </Link>
                       <button 
-                        onClick={() => handleDeletePaper(paper._id)}
+                        onClick={() => handleDeletePaper(paper._id, paper.title)}
+                        disabled={deletingId === paper._id}
                         className="btn btn-error btn-sm"
                       >
-                        Delete
-                      </button>
-                      <button className="btn btn-outline btn-sm">
-                        Edit
+                        {deletingId === paper._id ? (
+                          <>
+                            <span className="loading loading-spinner loading-xs"></span>
+                            Deleting...
+                          </>
+                        ) : (
+                          'Delete'
+                        )}
                       </button>
                     </div>
                   </div>
