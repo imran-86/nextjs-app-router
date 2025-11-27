@@ -33,7 +33,7 @@ export default function PaperDetailsClient({ paperId }) {
   if (!paper) return <div className="alert alert-warning">Paper not found</div>;
 
   return  (
-    <div className="min-h-screen bg-base-100 py-8">
+    <div className="min-h-screen bg-zinc-50 py-28">
       <div className="container mx-auto px-4 max-w-4xl">
       
         <div className="bg-base-200 rounded-lg p-6 mb-6">

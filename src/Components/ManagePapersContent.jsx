@@ -106,7 +106,7 @@ export default function ManagePapersContent() {
   }
 
   return (
-    <div className="min-h-screen bg-base-100 py-8">
+    <div className="min-h-screen bg-zinc-50 py-28">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">

@@ -27,12 +27,11 @@ const handleSignOut = () => {
        
        <Link className="pl-2" href="/">Home</Link>
        <Link  className="pl-2" href="/papers">All Papers</Link>
-        <Link  className="pl-2" href="/">About</Link>
-        <Link  className="pl-2" href="/add-papers">Add Papers</Link>
-        <Link  className="pl-2" href="/manage-papers">Manage Papers</Link>
+        <Link  className="pl-2" href="/about">About</Link>
+        
     </>
     return <div className="">
-        <div className="navbar bg-base-100 shadow-sm fixed top-0 z-10">
+        <div className="navbar bg-base-100 shadow-sm fixed top-0 z-10 bg-gradient-to-r from-primary to-secondary text-white">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +43,7 @@ const handleSignOut = () => {
          {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl font-bold text-blue-800">Research <span className=" font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">PaperHub</span></a>
+    <a className="btn btn-ghost text-xl font-bold text-white font-bold drop-shadow-lg">Research <span className=" font-bold  text-yellow-300">PaperHub</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -56,7 +55,7 @@ const handleSignOut = () => {
     {
       user?<div>
          {user && (
-  <div className="dropdown dropdown-end">
+  <div className="dropdown dropdown-end text-black">
     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
       <div className="w-10 rounded-full">
         <img
@@ -67,7 +66,8 @@ const handleSignOut = () => {
     
    
     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-      <li><a>Profile</a></li>
+      <li><Link  className="pl-2" href="/add-papers">Add Papers</Link></li>
+        <li><Link  className="pl-2" href="/manage-papers">Manage Papers</Link></li>
       <li><button onClick={handleSignOut}>Logout</button></li>
     </ul>
   </div>

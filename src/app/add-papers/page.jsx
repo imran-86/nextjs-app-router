@@ -1,7 +1,7 @@
 import PaperSubmissionForm from "@/Components/PaperSubmissionForm";
 
 export default function AddPapers(){
-    return <div className="min-h-screen bg-base-100 py-8">
+    return <div className="min-h-screen bg-zinc-50  py-28">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">Submit Your Research Paper</h1>

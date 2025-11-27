@@ -65,7 +65,7 @@ export default function AllPapers() {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-26 bg-zinc-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
