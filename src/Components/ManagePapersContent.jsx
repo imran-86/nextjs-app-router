@@ -110,7 +110,7 @@ export default function ManagePapersContent() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Manage Your Research Papers</h1>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">Manage Your Research Papers</h1>
           <p className="text-xl text-gray-600">
             View and manage all your submitted research papers
           </p>

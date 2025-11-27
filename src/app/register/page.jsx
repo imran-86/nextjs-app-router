@@ -131,11 +131,11 @@ export default function Register() {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-screen pt-20">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <div className="text-center">
-                        <h1 className="text-3xl font-bold mt-5">Sign up now!</h1>
+                        <h1 className="text-4xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4 p-5">Sign up now!</h1>
                     </div>
                     <div className="card-body">
                         <form onSubmit={handleRegister}>

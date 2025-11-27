@@ -68,8 +68,8 @@ export default function FeaturedPapers() {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Research Papers
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+            Recent Papers
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Discover the latest groundbreaking research from our community

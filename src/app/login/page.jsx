@@ -73,7 +73,7 @@ export default function Login(){
         <div className="card-body">
           <form onSubmit={handleLogIn}>
             <fieldset className="fieldset">
-              <h1 className="text-3xl font-bold">Login now!</h1>
+              <h1 className="text-4xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-8">Login now!</h1>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Email
               </label>

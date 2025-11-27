@@ -31,8 +31,8 @@ const handleSignOut = () => {
         <Link  className="pl-2" href="/add-papers">Add Papers</Link>
         <Link  className="pl-2" href="/manage-papers">Manage Papers</Link>
     </>
-    return <div>
-        <div className="navbar bg-base-100 shadow-sm">
+    return <div className="">
+        <div className="navbar bg-base-100 shadow-sm fixed top-0 z-10">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +44,7 @@ const handleSignOut = () => {
          {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl font-bold text-blue-800">Research <span className="font-semibold text-blue-700">PaperHub</span></a>
+    <a className="btn btn-ghost text-xl font-bold text-blue-800">Research <span className=" font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">PaperHub</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
