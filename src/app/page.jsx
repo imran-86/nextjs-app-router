@@ -12,7 +12,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
             Welcome to Research Hub
           </h2>
-          <p className="text-xl max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto text-gray-600">
             A comprehensive platform for researchers to share, discover, and
             collaborate on academic papers across various disciplines.
           </p>

@@ -1,4 +1,3 @@
-
 'use client'
 import { useContext, useState } from 'react'
 import { AuthContext } from './Context/AuthContext'
@@ -29,7 +28,6 @@ export default function PaperSubmissionForm() {
     setLoading(true)
 
     try {
-     
       const paperData = {
         title: formData.title,
         author: user?.displayName || user?.email.split('@')[0], 
@@ -37,7 +35,7 @@ export default function PaperSubmissionForm() {
         category: formData.category,
         description: formData.description,
         abstract: formData.abstract,
-        image: formData.image || 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Default image
+        image: formData.image || 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
         tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag),
         university: formData.university,
         publishedDate: new Date().toISOString(),
@@ -46,7 +44,6 @@ export default function PaperSubmissionForm() {
         userId: user.uid 
       }
 
-     
       const response = await fetch('/api/papers/add-papers', {
         method: 'POST',
         headers: {
@@ -57,7 +54,6 @@ export default function PaperSubmissionForm() {
 
       if (response.ok) {
         alert('Research paper submitted successfully!')
-        
         setFormData({
           title: '',
           category: '',
@@ -79,10 +75,11 @@ export default function PaperSubmissionForm() {
   }
 
   return (
-    <div className="bg-base-200 p-6 rounded-lg shadow-lg">
+    <div className="bg-base-200 p-4 sm:p-6 rounded-lg shadow-lg mx-2 sm:mx-0">
+      {/* User Info Section */}
       <div className="mb-6 p-4 bg-primary text-primary-content rounded-lg">
-        <h3 className="font-bold">Your Information</h3>
-        <p><strong>Author:</strong> {user?.displayName || user?.email.split('@')[0]}</p>
+        <h3 className="font-bold text-lg">Your Information</h3>
+        <p className="mt-2"><strong>Author:</strong> {user?.displayName || user?.email.split('@')[0]}</p>
         <p><strong>Email:</strong> {user?.email}</p>
       </div>
 
@@ -90,30 +87,30 @@ export default function PaperSubmissionForm() {
         {/* Paper Title */}
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-semibold">Research Paper Title *</span>
+            <span className="label-text font-semibold text-base sm:text-lg">Research Paper Title *</span>
           </label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="input input-bordered ml-2"
+            className="input input-bordered w-full"
             placeholder="Enter your research paper title"
             required
           />
-        </div><br />
+        </div>
 
-        {/* Category and University */}
-        <div className="grid md:grid-cols-1 gap-4">
+        {/* Category and University - Responsive Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-semibold">Category :</span>
+              <span className="label-text font-semibold">Category *</span>
             </label>
             <select
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="select select-bordered ml-23"
+              className="select select-bordered w-full"
               required
             >
               <option value="">Select Category</option>
@@ -135,7 +132,7 @@ export default function PaperSubmissionForm() {
               name="university"
               value={formData.university}
               onChange={handleChange}
-              className="input input-bordered"
+              className="input input-bordered w-full"
               placeholder="e.g., Stanford University"
               required
             />
@@ -151,11 +148,13 @@ export default function PaperSubmissionForm() {
             name="abstract"
             value={formData.abstract}
             onChange={handleChange}
-            className="textarea textarea-bordered h-32 ml-23"
+            className="textarea textarea-bordered w-full h-32 sm:h-40"
             placeholder="Provide a concise abstract of your research paper..."
             required
           />
-        
+          <label className="label">
+            <span className="label-text-alt text-sm">Brief summary of your research (200-300 words)</span>
+          </label>
         </div>
 
         {/* Description */}
@@ -167,11 +166,13 @@ export default function PaperSubmissionForm() {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered w-full h-24 sm:h-32"
             placeholder="Provide a detailed description of your research..."
             required
           />
-          
+          <label className="label">
+            <span className="label-text-alt text-sm">Comprehensive description of your research work</span>
+          </label>
         </div>
 
         {/* Image URL */}
@@ -184,25 +185,27 @@ export default function PaperSubmissionForm() {
             name="image"
             value={formData.image}
             onChange={handleChange}
-            className="input input-bordered ml-5"
+            className="input input-bordered w-full"
             placeholder="https://example.com/your-image.jpg"
           />
           <label className="label">
-            <span className="label-text-alt">Optional: Provide an image URL that represents your research</span>
+            <span className="label-text-alt text-sm">Optional: Provide an image URL that represents your research</span>
           </label>
           
           {/* Image Preview */}
           {formData.image && (
-            <div className="mt-2">
+            <div className="mt-3">
               <p className="text-sm font-medium mb-2">Image Preview:</p>
-              <img 
-                src={formData.image} 
-                alt="Preview" 
-                className="w-32 h-32 object-cover rounded-lg border"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                }}
-              />
+              <div className="flex justify-center sm:justify-start">
+                <img 
+                  src={formData.image} 
+                  alt="Preview" 
+                  className="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-lg border shadow-sm"
+                  onError={(e) => {
+                    e.target.style.display = 'none'
+                  }}
+                />
+              </div>
             </div>
           )}
         </div>
@@ -217,11 +220,11 @@ export default function PaperSubmissionForm() {
             name="tags"
             value={formData.tags}
             onChange={handleChange}
-            className="input input-bordered ml-5"
+            className="input input-bordered w-full"
             placeholder="e.g., Machine Learning, AI, Data Analysis (separate with commas)"
           />
           <label className="label">
-            <span className="label-text-alt">Add relevant keywords to help others discover your research</span>
+            <span className="label-text-alt text-sm">Add relevant keywords to help others discover your research</span>
           </label>
         </div>
 
@@ -229,7 +232,7 @@ export default function PaperSubmissionForm() {
         <div className="form-control pt-4">
           <button 
             type="submit" 
-            className="btn btn-primary btn-lg"
+            className="btn btn-primary btn-lg w-full sm:w-auto"
             disabled={loading}
           >
             {loading ? (
