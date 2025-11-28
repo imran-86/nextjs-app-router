@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     
-    const response = await fetch('http://localhost:4000/all-papers', {
+    const response = await fetch('https://nextjs-task-server.vercel.app/all-papers', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

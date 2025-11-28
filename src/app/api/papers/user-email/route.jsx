@@ -12,7 +12,7 @@ export async function GET(request) {
         { status: 400 }
       );
     }
-    const response = await fetch(`http://localhost:4000/user-email?userEmail=${encodeURIComponent(userEmail)}`, {
+    const response = await fetch(`https://nextjs-task-server.vercel.app/user-email?userEmail=${encodeURIComponent(userEmail)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

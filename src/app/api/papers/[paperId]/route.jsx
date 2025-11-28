@@ -5,7 +5,7 @@ export async function GET(request, { params }) {
     const { paperId } = await params; 
     
     
-    const response = await fetch(`http://localhost:4000/all-papers/${paperId}`, {
+    const response = await fetch(`https://nextjs-task-server.vercel.app/all-papers/${paperId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export async function DELETE(request, { params }) {
       );
     }
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://nextjs-task-server.vercel.app';
     const response = await fetch(`${backendUrl}/api/papers/${paperId}`, {
       method: 'DELETE',
       headers: {

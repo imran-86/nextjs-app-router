@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
   try {
     const paperData = await request.json()
-    const response = await fetch('http://localhost:4000/add-papers', {
+    const response = await fetch('https://nextjs-task-server.vercel.app/add-papers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
