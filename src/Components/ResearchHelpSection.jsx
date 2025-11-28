@@ -184,10 +184,10 @@ const ResearchHelpSection = () => {
                 Connect with fellow researchers, share insights, and collaborate on projects
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/community" className="btn btn-lg btn-white text-gray-800 hover:bg-gray-100">
+                <Link href="/" className="btn btn-lg btn-white text-gray-800 hover:bg-gray-100">
                   👥 Join Community
                 </Link>
-                <Link href="/resources" className="btn btn-lg btn-outline btn-white border-white text-white hover:bg-white hover:text-gray-800">
+                <Link href="/" className="btn btn-lg btn-outline btn-white border-white text-white hover:bg-white hover:text-gray-800">
                   📚 View Resources
                 </Link>
               </div>

@@ -37,8 +37,8 @@ const handleSignOut = () => {
     ];
 
     const mobileLinks = <>
-        <Link href="/">Home</Link>
-        <Link href="/papers">All Papers</Link>
+        <Link className="text-white" href="/">Home</Link>
+        <Link className="text-red-500" href="/papers">All Papers</Link>
         <Link href="/about">About</Link>
         {user && (
             <>
@@ -49,7 +49,7 @@ const handleSignOut = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100  fixed top-0 z-10 bg-white shadow-sm">
+        <div className="navbar bg-gradient-to-r from-primary to-secondary   fixed top-0 z-10  shadow-sm">
            
             <div className="navbar-start">
                 <div className="dropdown">
@@ -64,8 +64,8 @@ const handleSignOut = () => {
                 </div>
                 
                 
-                <Link href="/" className="btn btn-ghost text-xl font-bold">
-                    Research <span className="text-primary">PaperHub</span>
+                <Link href="/" className="btn btn-ghost text-xl font-bold text-yellow-300">
+                    Research <span className="text-primary text-white">PaperHub</span>
                 </Link>
             </div>
 
@@ -79,7 +79,7 @@ const handleSignOut = () => {
                             className={`
                                 flex flex-col items-center px-4 py-2 relative
                                 transition-all duration-200 group
-                                ${pathname === item.href ? 'text-primary' : 'text-gray-600 hover:text-gray-900'}
+                                ${pathname === item.href ? 'text-white' : 'text-white hover:text-gray-900'}
                             `}
                         >
                            
@@ -110,7 +110,7 @@ const handleSignOut = () => {
                             className={`
                                 flex flex-col items-center px-4 py-2 relative
                                 transition-all duration-200 group
-                                ${pathname === item.href ? 'text-primary' : 'text-gray-600 hover:text-gray-900'}
+                                ${pathname === item.href ? 'text-white' : 'text-white hover:text-gray-900'}
                             `}
                         >
                             

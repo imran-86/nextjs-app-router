@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Research Paper Hub 📚
+A comprehensive academic research paper management system built with Next.js, Firebase, and MongoDB. This platform allows researchers to discover, share, and manage research papers across various academic disciplines.
 
-## Getting Started
+🚀 Features
+User Authentication - Secure login/register with Firebase Auth
 
-First, run the development server:
+Paper Management - Add, view, and manage research papers
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Category System - Organized by Physics, Chemistry, Engineering, Computer Science, Biology, and Mathematics
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Responsive Design - Beautiful UI with DaisyUI components
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Real-time Updates - Dynamic paper management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Protected Routes - Secure access to user-specific features  
 
-## Learn More
+🛠️ Tech Stack
+Frontend: Next.js 14, React, Tailwind CSS, DaisyUI
 
-To learn more about Next.js, take a look at the following resources:
+Authentication: Firebase Auth
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Backend: Express.js, MongoDB
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployment: Vercel (Frontend), Vercel (Backend)
 
-## Deploy on Vercel
+Animations: React Awesome Reveal  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Prerequisites
+Node.js 18+ installed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MongoDB database
+
+Firebase project  
+
+
+1. Clone the Repository
+bash
+git clone https://github.com/imran-86/nextjs-task.git
+cd research-paper-hub     
+
+2. Install Dependencies
+bash
+npm install   
+
+
+🛣️ Route Summary
+Public Routes
+/ - Homepage with featured papers and categories
+
+/about - About section and team information
+
+/papers - Browse all research papers
+
+/papers/[id] - Individual paper details
+
+/login - User login page
+
+/register - User registration page
+
+Protected Routes (Requires Authentication)
+/add-papers - Submit new research paper
+
+/manage-papers - Manage user's submitted papers
+
+API Routes
+GET /api/papers - Fetch all papers
+
+GET /api/papers/[id] - Fetch specific paper
+
+GET /api/papers/user-email - Fetch user's papers
+
+POST /api/papers - Create new paper
+
+DELETE /api/papers/[id] - Delete paper   
+
+
+Authentication System
+Firebase Authentication
+
+Protected routes with context API
+
+Token-based session management
+
+Paper Management
+CRUD operations for research papers
+
+Category-based organization
+
+User-specific paper management
+
+UI/UX Features
+Responsive design with Tailwind CSS
+
+Beautiful animations with React Awesome Reveal
+
+Professional styling with DaisyUI components
+
+Active navigation states   
+
